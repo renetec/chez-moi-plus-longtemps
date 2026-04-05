@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chez Moi Plus Longtemps</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Québec seulement</p>
+        <h1>Chez Moi Plus Longtemps</h1>
+        <p class="lede">
+          Répondez à quelques questions pour découvrir des aides qui pourraient vous aider à rester chez vous plus longtemps.
+        </p>
+        <ul class="hero-points">
+          <li>Questionnaire très court</li>
+          <li>Résultats en français simple</li>
+          <li>Liens officiels et date de vérification</li>
+        </ul>
+      </div>
+      <aside class="hero-card">
+        <p class="card-label">Ce que l'outil fait</p>
+        <p class="card-text">Il repère des programmes qui pourraient vous convenir et vous indique quoi préparer avant de faire une demande.</p>
+        <p class="card-note">
+          Important : cet outil est informatif seulement. L'admissibilité finale dépend toujours des règles officielles.
+        </p>
+      </aside>
+    </section>
+
+    <section class="app-shell">
+      <form id="questionnaire" class="panel panel-form">
+        <div class="panel-head">
+          <p class="panel-kicker">Questionnaire</p>
+          <h2>Quelques réponses suffisent</h2>
+        </div>
+
+        <label class="field">
+          <span>Quel âge avez-vous?</span>
+          <input id="age" name="age" type="number" min="0" max="120" placeholder="Ex. 72" required>
+        </label>
+
+        <label class="field">
+          <span>Habitez-vous au Québec?</span>
+          <select id="residentQuebec" name="residentQuebec" required>
+            <option value="oui">Oui</option>
+            <option value="non">Non</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Où habitez-vous?</span>
+          <select id="habitation" name="habitation" required>
+            <option value="domicile">À domicile</option>
+            <option value="logement">Dans un logement locatif</option>
+            <option value="residence">Dans une résidence pour aînés</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Êtes-vous propriétaire ou locataire?</span>
+          <select id="occupation" name="occupation" required>
+            <option value="proprietaire">Propriétaire</option>
+            <option value="locataire">Locataire</option>
+            <option value="les-deux">Je ne sais pas / autre situation</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Avez-vous des limitations physiques ou de la difficulté à vous déplacer?</span>
+          <select id="mobilite" name="mobilite" required>
+            <option value="oui">Oui</option>
+            <option value="non">Non</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>De quel type d'aide avez-vous surtout besoin?</span>
+          <select id="besoin" name="besoin" required>
+            <option value="domicile">Aide à la maison</option>
+            <option value="travaux">Travaux d'adaptation ou de réparation</option>
+            <option value="logement">Aide pour le logement</option>
+            <option value="revenu">Aide financière ou crédit d'impôt</option>
+            <option value="transport">Aide pour le transport médical</option>
+            <option value="aidant">Soutien pour proche aidant</option>
+            <option value="dettes">Aide pour dettes ou budget</option>
+          </select>
+        </label>
+
+        <label class="field field-check">
+          <input id="urgence" name="urgence" type="checkbox">
+          <span>J'ai besoin d'aide maintenant</span>
+        </label>
+
+        <button class="primary-button" type="submit">Voir les aides possibles</button>
+      </form>
+
+      <section class="panel panel-results">
+        <div class="panel-head">
+          <p class="panel-kicker">Résultats</p>
+          <h2>Programmes suggérés</h2>
+        </div>
+
+        <div id="summary" class="summary">
+          Remplissez le questionnaire pour voir les résultats.
+        </div>
+
+        <div id="warningBox" class="warning-box hidden"></div>
+
+        <div id="results" class="results"></div>
+      </section>
+    </section>
+  </main>
+
+  <template id="result-template">
+    <article class="result-card">
+      <div class="result-top">
+        <div>
+          <p class="result-category"></p>
+          <h3 class="result-title"></h3>
+        </div>
+        <span class="result-status"></span>
+      </div>
+      <p class="result-why"></p>
+      <div class="result-block">
+        <p class="result-label">Ce qu'il faut préparer</p>
+        <ul class="result-list result-documents"></ul>
+      </div>
+      <div class="result-block">
+        <p class="result-label">Comment faire la demande</p>
+        <p class="result-apply"></p>
+      </div>
+      <details class="result-details">
+        <summary>Voir les détails</summary>
+        <div class="result-block">
+          <p class="result-label">Conditions principales</p>
+          <ul class="result-list result-conditions"></ul>
+        </div>
+        <div class="result-block">
+          <p class="result-label">Notes importantes</p>
+          <p class="result-notes"></p>
+        </div>
+      </details>
+      <div class="result-footer">
+        <p class="result-verified"></p>
+        <a class="result-link" target="_blank" rel="noreferrer noopener">Lien officiel</a>
+      </div>
+    </article>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>
